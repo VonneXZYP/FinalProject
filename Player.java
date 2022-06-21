@@ -33,6 +33,7 @@ public class Player {
     public Player(GamePanel gp, KeyHandler keyH){
         this.gp = gp;
         this.keyH = keyH;
+        getPlayerImage();
         setDefultValues();
 
     }
@@ -131,6 +132,11 @@ public class Player {
     {
         this.point =+ add;
     }
+
+
+
+
+
     /**
     sets the defult values of player
     */
@@ -223,6 +229,7 @@ public class Player {
     display the player on the screen
     */
     public void draw(Graphics2D g2){
+
         BufferedImage image = null;
 
         switch (direction){
@@ -259,7 +266,7 @@ public class Player {
             }
             break;
         }
-        g2.drawImage(image, x, y, 20, 20, null);  
+        g2.drawImage(image, x, y, 20, 20, null);
     }
 
 }
