@@ -1,6 +1,8 @@
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 
 public class Player {
     
@@ -140,6 +142,26 @@ public class Player {
         point = 0;
         making = null;
         direction = "down";
+    }
+    /**
+    gets the player sprites
+    */
+    public void getPlayerImage()
+    {
+        try{
+
+            back1 = ImageIO.read(getClass().getResourceAsStream("/player/back1.png"));
+            back2 = ImageIO.read(getClass().getResourceAsStream("/player/back2.png"));
+            down1 = ImageIO.read(getClass().getResourceAsStream("/player/down1.png"));
+            down2 = ImageIO.read(getClass().getResourceAsStream("/player/down2.png"));
+            left1 = ImageIO.read(getClass().getResourceAsStream("/player/left1.png"));
+            left2 = ImageIO.read(getClass().getResourceAsStream("/player/left2.png"));
+            right1 = ImageIO.read(getClass().getResourceAsStream("/player/right1.png"));
+            right2 = ImageIO.read(getClass().getResourceAsStream("/player/right1.png"));
+            
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }
     /**
     allows the player to move
