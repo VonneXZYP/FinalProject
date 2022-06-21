@@ -195,7 +195,7 @@ public class Player {
             }
          }
         else if(keyH.leftPressed == true){
-            direction = "left";
+            direction = "right";
             if (x + speed < gp.getScreenWidth()-20){
                x += speed;
             }
@@ -205,7 +205,7 @@ public class Player {
                 
          }
         else if(keyH.rightPressed == true){
-            direction = "right";
+            direction = "left";
             if (x - speed > 0){
                x -= speed;
             }
