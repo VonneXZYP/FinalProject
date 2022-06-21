@@ -1,8 +1,6 @@
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
-import javax.swing.JPanel;
+import java.awt.image.BufferedImage;
 
 public class Player {
     
@@ -19,6 +17,10 @@ public class Player {
     /** the food the player is making */
     Food making;
 
+    public BufferedImage back1, back2, down1, down2, left1, left2, right1, right2;
+    public String direction;
+    public int spriteCounter = 0;
+    public int spriteNum = 1;
     GamePanel gp;
     KeyHandler keyH;
 
@@ -137,6 +139,7 @@ public class Player {
         speed = 5;
         point = 0;
         making = null;
+        direction = "down";
     }
     /**
     allows the player to move
