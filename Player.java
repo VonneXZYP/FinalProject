@@ -169,6 +169,7 @@ public class Player {
     public void update()
     {
         if(keyH.upPressed == true){
+            direction = "back";
             if (y - speed > 0)
             {
                y -= speed;
@@ -177,7 +178,8 @@ public class Player {
                y = 0;
             }
          }
-         if(keyH.downPressed == true){
+        else if(keyH.downPressed == true){
+            direction = "down";
             if (y + speed < gp.getScreenHeight()-20)
             {
                y += speed;
@@ -186,7 +188,8 @@ public class Player {
                y = gp.getScreenHeight()-20;
             }
          }
-         if(keyH.leftPressed == true){
+        else if(keyH.leftPressed == true){
+            direction = "left";
             if (x + speed < gp.getScreenWidth()-20){
                x += speed;
             }
@@ -195,13 +198,25 @@ public class Player {
             }
                 
          }
-         if(keyH.rightPressed == true){
+        else if(keyH.rightPressed == true){
+            direction = "right";
             if (x - speed > 0){
                x -= speed;
             }
             else if (x - speed < 0){
                x = 0;
             }
+         }
+
+         spriteCounter++;
+         if(spriteCounter > 10){
+             if(spriteNum == 1){
+                 spriteNum = 2;
+             }
+             if(spriteNum == 2){
+                spriteNum = 1;
+            }
+            spriteCounter = 0;
          }
     }
     /**
