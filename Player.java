@@ -216,12 +216,12 @@ public class Player {
              }
 
              spriteCounter++;
-             if(spriteCounter > 15){
+             if(spriteCounter > 10){
                  if(spriteNum == 1){
                      spriteNum = 2;
                  }
-              if(spriteNum == 2){
-                 spriteNum = 1;
+                 else if(spriteNum == 2){
+                     spriteNum = 1;
                 }
                 spriteCounter = 0;
              }
