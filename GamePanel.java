@@ -17,7 +17,7 @@ public class GamePanel  extends JPanel implements Runnable{
    //FPS
    int FPS = 60;
 
-   TileManager tileM = new TileManager(this);
+   //TileManager tileM = new TileManager(this);
    Thread gameThread;
    KeyHandler keyH = new KeyHandler();
    Player player1 = new Player(this, keyH);
