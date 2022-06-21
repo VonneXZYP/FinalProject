@@ -16,17 +16,12 @@ public class GamePanel  extends JPanel implements Runnable{
 
    //FPS
    int FPS = 60;
-
+   TileManager tileM = new TileManager(this);
    Thread gameThread;
    KeyHandler keyH = new KeyHandler();
    Player player1 = new Player(this, keyH);
 
-   //player default position    
-   int playerX = screenWidth/2;
-   int playerY = screenHeight/2;
- 
    
-
    public GamePanel() {
    
       this.setPreferredSize(new Dimension(screenWidth,screenHeight));
@@ -98,7 +93,10 @@ public class GamePanel  extends JPanel implements Runnable{
    public void paintComponent(Graphics g){
       super.paintComponent(g);
       Graphics2D g2 = (Graphics2D)g;
+
+      //tileM.draw(g2);
       player1.draw(g2);
+
       g2.dispose();
    }
 
