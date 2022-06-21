@@ -9,7 +9,7 @@ public class GamePanel  extends JPanel implements Runnable{
    //game panel is a subclass of Jpanel 
    //SCREEN SETTINGS
 
-   public static final int tileSize = 20;
+   public static final int tileSize = 40;
    //we are using tiles that are 16*  16
    final int screenWidth = 16 * 40 ;
    final int screenHeight = 16 * 20;
