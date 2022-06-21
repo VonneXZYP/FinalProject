@@ -163,7 +163,7 @@ public class Player {
             left1 = ImageIO.read(getClass().getResourceAsStream("/player/left1.png"));
             left2 = ImageIO.read(getClass().getResourceAsStream("/player/left2.png"));
             right1 = ImageIO.read(getClass().getResourceAsStream("/player/right1.png"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("/player/right1.png"));
+            right2 = ImageIO.read(getClass().getResourceAsStream("/player/right2.png"));
             
         }catch(IOException e){
             e.printStackTrace();
@@ -174,56 +174,59 @@ public class Player {
     */
     public void update()
     {
-        if(keyH.upPressed == true){
-            direction = "back";
-            if (y - speed > 0)
-            {
-               y -= speed;
-            }
-            else if(y - speed < 0){
-               y = 0;
-            }
-         }
-        else if(keyH.downPressed == true){
-            direction = "down";
-            if (y + speed < gp.getScreenHeight()-20)
-            {
-               y += speed;
-            }
-            else if(y + speed > gp.getScreenHeight()-20){
-               y = gp.getScreenHeight()-20;
-            }
-         }
-        else if(keyH.leftPressed == true){
-            direction = "right";
-            if (x + speed < gp.getScreenWidth()-20){
-               x += speed;
-            }
-            else if(x + speed > gp.getScreenWidth()-20){
-               x = gp.getScreenWidth()-20;
-            }
-                
-         }
-        else if(keyH.rightPressed == true){
-            direction = "left";
-            if (x - speed > 0){
-               x -= speed;
-            }
-            else if (x - speed < 0){
-               x = 0;
-            }
-         }
-
-         spriteCounter++;
-         if(spriteCounter > 10){
-             if(spriteNum == 1){
-                 spriteNum = 2;
+        if(keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true){
+            if(keyH.upPressed == true){
+                direction = "back";
+                if (y - speed > 0)
+                {
+                   y -= speed;
+                }
+                else if(y - speed < 0){
+                   y = 0;
+                }
              }
-             if(spriteNum == 2){
-                spriteNum = 1;
-            }
-            spriteCounter = 0;
-         }
+            else if(keyH.downPressed == true){
+                direction = "down";
+                if (y + speed < gp.getScreenHeight()-gp.tileSize)
+                {
+                   y += speed;
+                }
+                else if(y + speed > gp.getScreenHeight()-gp.tileSize){
+                   y = gp.getScreenHeight()-gp.tileSize;
+                }
+             }
+            else if(keyH.leftPressed == true){
+                direction = "right";
+                if (x + speed < gp.getScreenWidth()-gp.tileSize){
+                   x += speed;
+                }
+                else if(x + speed > gp.getScreenWidth()-gp.tileSize){
+                   x = gp.getScreenWidth()-gp.tileSize;
+                }
+                
+             }
+            else if(keyH.rightPressed == true){
+                direction = "left";
+                if (x - speed > 0){
+                   x -= speed;
+                }
+                else if (x - speed < 0){
+                   x = 0;
+                }
+             }
+
+             spriteCounter++;
+             if(spriteCounter > 15){
+                 if(spriteNum == 1){
+                     spriteNum = 2;
+                 }
+              if(spriteNum == 2){
+                 spriteNum = 1;
+                }
+                spriteCounter = 0;
+             }
+        }
+        
     }
     /**
     display the player on the screen
