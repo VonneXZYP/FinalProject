@@ -25,21 +25,12 @@ public class Food {
     */
 
     public Food(int size){
-        if (size < 3 && size > 0){
-            this.size = size;
-        }
-        if(size < 3){
-            this.size = 3;
-        }
-        else{
-            this.size = 1;
-        }
+        this.size = size;
         this.point = 10;
         for (Entry<Topping, Boolean> entry : Topping.getList().entrySet()) {
  
             // using put method to copy one Map to Other
-            topping.put(entry.getKey(),
-                           entry.getValue());
+            topping.put(entry.getKey(),entry.getValue());
         }
     }
 
@@ -50,8 +41,7 @@ public class Food {
         for (Entry<Topping, Boolean> entry : Topping.getList().entrySet()) {
  
             // using put method to copy one Map to Other
-            topping.put(entry.getKey(),
-            entry.getValue());
+            topping.put(entry.getKey(),entry.getValue());
         }
         int i = 0;
         while(i < Math.floor(Math.random()*(5)+1)){

@@ -6,10 +6,11 @@ import javax.swing.JPanel;
 
 public class GamePanel  extends JPanel implements Runnable{
    
+   
    //game panel is a subclass of Jpanel 
    //SCREEN SETTINGS
 
-   public static final int tileSize = 100;
+   public final int tileSize = 100;
    //we are using tiles that are 16*  16
    final int screenWidth = 20 * 60 ;
    final int screenHeight = 20 * 40;
@@ -19,9 +20,26 @@ public class GamePanel  extends JPanel implements Runnable{
    TileManager tileM = new TileManager(this);
    Thread gameThread;
    KeyHandler keyH = new KeyHandler();
-   Player player1 = new Player(this, keyH);
+   Player player1 = new Player(this, keyH, 1500);
+   
+
+   Topping cheese = new Topping("cheese", 10, 7);
+   Topping pepperoni = new Topping("pepperoni", 10, 8);
+   Topping sausage = new Topping("sausage", 15, 50, 9);
+   Topping mushroom = new Topping("mushroom", 15, 80, 10);
+   Topping bacon = new Topping("bacon", 15, 90, 11);
+   Topping onion = new Topping("onion", 20, 100, 12);
+   Topping eggplant = new Topping("eggplant", 20, 150, 13);
+   Topping pepper = new Topping("pepper", 20, 180, 14);
+   Topping olives = new Topping("olives", 25, 200, 15);
+   Topping pineapple = new Topping("pineapple", 30, 300, 16);
+   
+   Food order = new Food();
+   Food pizza = null;
 
    
+
+
    public GamePanel() {
    
       this.setPreferredSize(new Dimension(screenWidth,screenHeight));

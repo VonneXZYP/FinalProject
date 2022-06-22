@@ -14,6 +14,8 @@ public class Topping{
     int cost;
     /** whether the topping is unlocked or not */
     boolean lock;
+    /** the topping's sprit's tileNum */
+    int tileNum;
     
     //list of all the toppings
     static HashMap<Topping, Boolean> baseList = new HashMap<>();
@@ -22,7 +24,7 @@ public class Topping{
     Constructor
     */
 
-    public Topping(String name, int point) {
+    public Topping(String name, int point, int tileNum) {
         
         this.name = name;
         if(point > 0){
@@ -30,10 +32,11 @@ public class Topping{
         }
         this.lock = false;
         this.cost = 0;
+        this.tileNum = tileNum;
         baseList.put(this, false);
     }
 
-    public Topping(String name, int point, int cost) {
+    public Topping(String name, int point, int cost, int tileNum) {
         
         this.name = name;
         if(point > 0){
@@ -41,6 +44,7 @@ public class Topping{
         }
         this.lock = true;
         this.cost = cost;
+        this.tileNum = tileNum;
         baseList.put(this, false);
     }
 
@@ -79,11 +83,18 @@ public class Topping{
         return this.cost;
     }
     /**
-    gets the cost of the topping
-    @return the cost of the topping
+    gets if the topping if locked or not
+    @return whether the topping is locked or not
     */
     public Boolean getLock() {
         return this.lock;
+    }
+    /**
+    gets the tile number of the topping
+    @return the tile number of the topping
+    */
+    public int getTileNum() {
+        return this.tileNum;
     }
 
 

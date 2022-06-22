@@ -18,6 +18,7 @@ public class Player {
     int point;
     /** the food the player is making */
     Food making;
+    
 
     public BufferedImage back1, back2, down1, down2, left1, left2, right1, right2;
     public String direction;
@@ -35,6 +36,15 @@ public class Player {
         this.keyH = keyH;
         getPlayerImage();
         setDefultValues();
+
+    }
+
+    public Player(GamePanel gp, KeyHandler keyH, int point){
+        this.gp = gp;
+        this.keyH = keyH;
+        getPlayerImage();
+        setDefultValues();
+        this.addPoint(point);
 
     }
 
@@ -63,6 +73,7 @@ public class Player {
     public Food getMaking(){
         return this.making;
     }
+    
 
     /*
     Mutators
@@ -215,6 +226,7 @@ public class Player {
                 }
              }
 
+             
              spriteCounter++;
              if(spriteCounter > 10){
                  if(spriteNum == 1){
@@ -226,6 +238,118 @@ public class Player {
                 spriteCounter = 0;
              }
         }
+
+        if(keyH.spacePressed == true){
+                 
+            if(x >= 6*gp.tileSize && x < 9*gp.tileSize && y <= gp.tileSize){
+                if(this.making != null){
+                   this.complete(gp.order); 
+                   gp.order = new Food();
+                }
+                
+            }
+            if(x > 2*gp.tileSize && x < 3*gp.tileSize && y < gp.tileSize){
+                this.making = gp.pizza = new Food(1); 
+            }
+            if(x > 3*gp.tileSize && x < 4*gp.tileSize && y < gp.tileSize){
+                this.making = gp.pizza = new Food(2); 
+            }
+            if(x > 4*gp.tileSize && x < 5*gp.tileSize && y < gp.tileSize){
+                this.making = gp.pizza = new Food(3); 
+            }
+            if(x > 2*gp.tileSize && x < 3*gp.tileSize && y > 2*gp.tileSize && y < 3*gp.tileSize){
+                if(this.making != null){
+                    this.making.add(gp.cheese);
+                }
+            }
+            if(x > 3*gp.tileSize && x < 4*gp.tileSize && y > 2*gp.tileSize && y < 3*gp.tileSize){
+                if(this.making != null){
+                    this.making.add(gp.pepperoni);
+                }
+            }
+            if(x > 4*gp.tileSize && x < 5*gp.tileSize && y > 2*gp.tileSize && y < 3*gp.tileSize){
+                if(!gp.sausage.getLock()){
+                    if(this.making != null){
+                        this.making.add(gp.sausage);
+                    }
+                }
+                if(gp.sausage.getLock()){
+                    this.unlock(gp.sausage);
+                }
+            }
+            if(x > 2*gp.tileSize && x < 3*gp.tileSize && y > 4*gp.tileSize && y < 5*gp.tileSize){
+                if(!gp.mushroom.getLock()){
+                    if(this.making != null){
+                        this.making.add(gp.mushroom);
+                    }
+                }
+                if(gp.mushroom.getLock()){
+                    this.unlock(gp.mushroom);
+                }
+            }
+            if(x > 3*gp.tileSize && x < 4*gp.tileSize && y > 4*gp.tileSize && y < 5*gp.tileSize){
+                if(!gp.bacon.getLock()){
+                    if(this.making != null){
+                        this.making.add(gp.bacon);
+                    }
+                }
+                if(gp.bacon.getLock()){
+                    this.unlock(gp.bacon);
+                }
+            }
+            if(x > 4*gp.tileSize && x < 5*gp.tileSize && y > 4*gp.tileSize && y < 5*gp.tileSize){
+                if(!gp.onion.getLock()){
+                    if(this.making != null){
+                        this.making.add(gp.onion);
+                    }
+                }
+                if(gp.onion.getLock()){
+                    this.unlock(gp.onion);
+                }
+            }
+            if(x > 6*gp.tileSize && x < 7*gp.tileSize && y > 2*gp.tileSize && y < 3*gp.tileSize){
+                if(!gp.eggplant.getLock()){
+                    if(this.making != null){
+                        this.making.add(gp.eggplant);
+                    }
+                }
+                if(gp.eggplant.getLock()){
+                    this.unlock(gp.eggplant);
+                }
+            }
+            if(x > 7*gp.tileSize && x < 8*gp.tileSize && y > 2*gp.tileSize && y < 3*gp.tileSize){
+                if(!gp.pepper.getLock()){
+                    if(this.making != null){
+                        this.making.add(gp.pepper);
+                    }
+                }
+                if(gp.pepper.getLock()){
+                    this.unlock(gp.pepper);
+                }
+            }
+            if(x > 6*gp.tileSize && x < 7*gp.tileSize && y > 4*gp.tileSize && y < 5*gp.tileSize){
+                if(!gp.olives.getLock()){
+                    if(this.making != null){
+                        this.making.add(gp.olives);
+                    }
+                }
+                if(gp.olives.getLock()){
+                    this.unlock(gp.olives);
+                }
+            }
+            if(x > 7*gp.tileSize && x < 8*gp.tileSize && y > 4*gp.tileSize && y < 5*gp.tileSize){
+                if(!gp.pineapple.getLock()){
+                    if(this.making != null){
+                        this.making.add(gp.pineapple);
+                    }
+                }
+                if(gp.pineapple.getLock()){
+                    this.unlock(gp.pineapple);
+                }
+            }
+
+         }
+
         
     }
     /**
@@ -270,6 +394,9 @@ public class Player {
             break;
         }
         g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
+
+        g2.setColor(Color.WHITE);
+        g2.fillRect(x, y, 20, 20);
     }
 
 }

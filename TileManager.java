@@ -1,6 +1,13 @@
 import java.io.IOException;
 import java.awt.Graphics2D;
 import javax.imageio.ImageIO;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.List;
+import java.util.Map;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
 public class TileManager {
     
@@ -56,6 +63,13 @@ public class TileManager {
             tile[16] = new Tiles();
             tile[16].image = ImageIO.read(getClass().getResourceAsStream("/tiles/pineapple.png"));
 
+            tile[17] = new Tiles();
+            tile[17].image = ImageIO.read(getClass().getResourceAsStream("/tiles/finish1.png"));
+            tile[18] = new Tiles();
+            tile[18].image = ImageIO.read(getClass().getResourceAsStream("/tiles/finish2.png"));
+
+            tile[19] = new Tiles();
+            tile[19].image = ImageIO.read(getClass().getResourceAsStream("/tiles/Temp.png"));
 
 
         }catch(IOException e){
@@ -74,6 +88,40 @@ public class TileManager {
         g2.drawImage(tile[4].image, 0, 5*gp.tileSize, gp.tileSize, gp.tileSize, null);
         g2.drawImage(tile[5].image, 0, 6*gp.tileSize, gp.tileSize, gp.tileSize, null);
 
+        switch (gp.order.getSize()){
+            case 1:
+            g2.drawImage(tile[0].image, 0, gp.tileSize, gp.tileSize, gp.tileSize, null);
+            break;
+            case 2:
+            g2.drawImage(tile[1].image, 0, gp.tileSize, gp.tileSize, gp.tileSize, null);
+            break;
+            case 3:
+            g2.drawImage(tile[2].image, 0, gp.tileSize, gp.tileSize, gp.tileSize, null);
+            break;
+        }
+        if(gp.order.getToppings().containsValue(true)){
+            Set set = gp.order.getToppings().entrySet();
+            Iterator iterator = set.iterator();
+            int toppingNum = 0;
+            while(iterator.hasNext()) {
+                Map.Entry mentry = (Map.Entry)iterator.next();
+                if((boolean) mentry.getValue()){
+                    g2.drawImage(tile[((Topping)mentry.getKey()).getTileNum()].image, 0, (2+toppingNum)*gp.tileSize, gp.tileSize, gp.tileSize, null);
+                    toppingNum++;
+                }
+            }
+        }
+        if(gp.order == null){
+            g2.drawImage(tile[3].image, 0, 0, gp.tileSize, gp.tileSize, null);        
+            g2.drawImage(tile[4].image, 0, gp.tileSize, gp.tileSize, gp.tileSize, null);
+            g2.drawImage(tile[4].image, 0, 2*gp.tileSize, gp.tileSize, gp.tileSize, null);
+            g2.drawImage(tile[4].image, 0, 3*gp.tileSize, gp.tileSize, gp.tileSize, null);        
+            g2.drawImage(tile[4].image, 0, 4*gp.tileSize, gp.tileSize, gp.tileSize, null);
+            g2.drawImage(tile[4].image, 0, 5*gp.tileSize, gp.tileSize, gp.tileSize, null);
+            g2.drawImage(tile[5].image, 0, 6*gp.tileSize, gp.tileSize, gp.tileSize, null);
+    
+        }
+
         //making
         g2.drawImage(tile[6].image, gp.getScreenWidth()-gp.tileSize, 0, gp.tileSize, gp.tileSize, null);        
         g2.drawImage(tile[4].image, gp.getScreenWidth()-gp.tileSize, gp.tileSize, gp.tileSize, gp.tileSize, null);
@@ -83,6 +131,98 @@ public class TileManager {
         g2.drawImage(tile[4].image, gp.getScreenWidth()-gp.tileSize, 5*gp.tileSize, gp.tileSize, gp.tileSize, null);
         g2.drawImage(tile[5].image, gp.getScreenWidth()-gp.tileSize, 6*gp.tileSize, gp.tileSize, gp.tileSize, null);
 
+        if(gp.player1.getMaking() != null){
+            switch (gp.pizza.getSize()){
+                case 1:
+                g2.drawImage(tile[0].image, gp.getScreenWidth()-gp.tileSize, gp.tileSize, gp.tileSize, gp.tileSize, null);
+                break;
+                case 2:
+                g2.drawImage(tile[1].image, gp.getScreenWidth()-gp.tileSize, gp.tileSize, gp.tileSize, gp.tileSize, null);
+                break;
+                case 3:
+                g2.drawImage(tile[2].image, gp.getScreenWidth()-gp.tileSize, gp.tileSize, gp.tileSize, gp.tileSize, null);
+                break;
+            }
+            if(gp.pizza.getToppings().containsValue(true)){
+                Set set = gp.pizza.getToppings().entrySet();
+                Iterator iterator = set.iterator();
+                int toppingNum = 0;
+                while(iterator.hasNext()) {
+                    Map.Entry mentry = (Map.Entry)iterator.next();
+                    if((boolean) mentry.getValue()){
+                        g2.drawImage(tile[((Topping)mentry.getKey()).getTileNum()].image, gp.getScreenWidth()-gp.tileSize, (2+toppingNum)*gp.tileSize, gp.tileSize, gp.tileSize, null);
+                        toppingNum++;
+                    }
+                }
+            }
+        }
+        if(gp.player1.getMaking() == null)
+        {
+        g2.drawImage(tile[6].image, gp.getScreenWidth()-gp.tileSize, 0, gp.tileSize, gp.tileSize, null);        
+        g2.drawImage(tile[4].image, gp.getScreenWidth()-gp.tileSize, gp.tileSize, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(tile[4].image, gp.getScreenWidth()-gp.tileSize, 2*gp.tileSize, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(tile[4].image, gp.getScreenWidth()-gp.tileSize, 3*gp.tileSize, gp.tileSize, gp.tileSize, null);        
+        g2.drawImage(tile[4].image, gp.getScreenWidth()-gp.tileSize, 4*gp.tileSize, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(tile[4].image, gp.getScreenWidth()-gp.tileSize, 5*gp.tileSize, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(tile[5].image, gp.getScreenWidth()-gp.tileSize, 6*gp.tileSize, gp.tileSize, gp.tileSize, null);
+        }
+        
+        
+
+        //finish tiles
+        g2.drawImage(tile[17].image, 6*gp.tileSize, 0, gp.tileSize, gp.tileSize, null);   
+        g2.drawImage(tile[17].image, 8*gp.tileSize, 0, gp.tileSize, gp.tileSize, null);       
+        g2.drawImage(tile[18].image, 7*gp.tileSize, 0, gp.tileSize, gp.tileSize, null);
+        
+        //work stations
+        g2.drawImage(tile[19].image, 2*gp.tileSize, 0, gp.tileSize, gp.tileSize, null);   
+        g2.drawImage(tile[19].image, 3*gp.tileSize, 0, gp.tileSize, gp.tileSize, null);   
+        g2.drawImage(tile[19].image, 4*gp.tileSize, 0, gp.tileSize, gp.tileSize, null);   
+        g2.drawImage(tile[0].image, 2*gp.tileSize, 0, gp.tileSize, gp.tileSize, null);   
+        g2.drawImage(tile[1].image, 3*gp.tileSize, 0, gp.tileSize, gp.tileSize, null);   
+        g2.drawImage(tile[2].image, 4*gp.tileSize, 0, gp.tileSize, gp.tileSize, null); 
+       
+        g2.drawImage(tile[19].image, 2*gp.tileSize, 2*gp.tileSize, gp.tileSize, gp.tileSize, null);   
+        g2.drawImage(tile[19].image, 3*gp.tileSize, 2*gp.tileSize, gp.tileSize, gp.tileSize, null);   
+        g2.drawImage(tile[7].image, 2*gp.tileSize, 2*gp.tileSize, gp.tileSize, gp.tileSize, null);   
+        g2.drawImage(tile[8].image, 3*gp.tileSize, 2*gp.tileSize, gp.tileSize, gp.tileSize, null);   
+        
+        g2.drawImage(tile[19].image, 4*gp.tileSize, 2*gp.tileSize, gp.tileSize, gp.tileSize, null);   
+        g2.drawImage(tile[19].image, 2*gp.tileSize, 4*gp.tileSize, gp.tileSize, gp.tileSize, null);   
+        g2.drawImage(tile[19].image, 3*gp.tileSize, 4*gp.tileSize, gp.tileSize, gp.tileSize, null);   
+        g2.drawImage(tile[19].image, 4*gp.tileSize, 4*gp.tileSize, gp.tileSize, gp.tileSize, null);   
+        g2.drawImage(tile[19].image, 6*gp.tileSize, 2*gp.tileSize, gp.tileSize, gp.tileSize, null);   
+        g2.drawImage(tile[19].image, 7*gp.tileSize, 2*gp.tileSize, gp.tileSize, gp.tileSize, null);   
+        g2.drawImage(tile[19].image, 6*gp.tileSize, 4*gp.tileSize, gp.tileSize, gp.tileSize, null);   
+        g2.drawImage(tile[19].image, 7*gp.tileSize, 4*gp.tileSize, gp.tileSize, gp.tileSize, null);   
+
+        if(!gp.sausage.getLock()){
+            g2.drawImage(tile[9].image, 4*gp.tileSize, 2*gp.tileSize, gp.tileSize, gp.tileSize, null);
+        }
+        if(!gp.mushroom.getLock()){
+            g2.drawImage(tile[10].image, 2*gp.tileSize, 4*gp.tileSize, gp.tileSize, gp.tileSize, null);
+        }
+        if(!gp.bacon.getLock()){
+            g2.drawImage(tile[11].image, 3*gp.tileSize, 4*gp.tileSize, gp.tileSize, gp.tileSize, null);
+        }
+        if(!gp.onion.getLock()){
+            g2.drawImage(tile[12].image, 4*gp.tileSize, 4*gp.tileSize, gp.tileSize, gp.tileSize, null);
+        }
+        if(!gp.eggplant.getLock()){
+            g2.drawImage(tile[13].image, 6*gp.tileSize, 2*gp.tileSize, gp.tileSize, gp.tileSize, null);
+        }
+        if(!gp.pepper.getLock()){
+            g2.drawImage(tile[14].image, 7*gp.tileSize, 2*gp.tileSize, gp.tileSize, gp.tileSize, null);
+        }
+        if(!gp.olives.getLock()){
+            g2.drawImage(tile[15].image, 6*gp.tileSize, 4*gp.tileSize, gp.tileSize, gp.tileSize, null);
+        }
+        if(!gp.pineapple.getLock()){
+            g2.drawImage(tile[16].image, 7*gp.tileSize, 4*gp.tileSize, gp.tileSize, gp.tileSize, null);
+        }
+
+
+        
     }
 
 }
