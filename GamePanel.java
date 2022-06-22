@@ -20,7 +20,7 @@ public class GamePanel  extends JPanel implements Runnable{
    TileManager tileM = new TileManager(this);
    Thread gameThread;
    KeyHandler keyH = new KeyHandler();
-   Player player1 = new Player(this, keyH, 1500);
+   Player player1 = new Player(this, keyH,0);
    
 
    Topping cheese = new Topping("cheese", 10, 7);
@@ -57,7 +57,7 @@ public class GamePanel  extends JPanel implements Runnable{
       double nextDrawTime = System.nanoTime() + drawInterval;
    
       while(gameThread != null){
-         
+         System.out.println(player1.getPoint());
          update();
       
          repaint();
