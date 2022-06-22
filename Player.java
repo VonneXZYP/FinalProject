@@ -396,7 +396,7 @@ public class Player {
         g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
 
         g2.setColor(Color.WHITE);
-        g2.fillRect(x, y, 20, 20);
+        g2.fillRect(x, y, 10, 10);
     }
 
 }
