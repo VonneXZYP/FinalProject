@@ -107,7 +107,7 @@ public class Player {
     public void complete(Food order)
     {
         if(making.compare(order)){
-            point =+ order.getPoint();
+            this.point = point + making.getPoint();
             making = null;
             order = null;
         }
