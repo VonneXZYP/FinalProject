@@ -14,17 +14,12 @@ public class Main {
         Topping mushroom = new Topping("mushroom", 10, 80);
         Topping bacon = new Topping("bacon", 10, 80);
         Topping onion = new Topping("onion", 10, 80);
-        Topping chicken = new Topping("chicken", 10, 80);
+        Topping eggplant = new Topping("eggplant", 10, 80);
         Topping pepper = new Topping("pepper", 10, 150);
         Topping olives = new Topping("olives", 10, 100);
-        Topping spinach = new Topping("spinach", 10, 150);
-        Topping beef = new Topping("beef", 10, 80);
-        Topping ham = new Topping("ham", 10, 100);
         Topping pineapple = new Topping("pineapple", 10, 200);
-        Topping corn = new Topping("corn", 10, 200);
-        Topping eggplant = new Topping("eggplant", 10, 200);
 
-        //Testing
+        //* */
         Food order = new Food();
         Food pizza = new Food(1);
         Food pizza2 = new Food(1);
@@ -59,7 +54,6 @@ public class Main {
         player.unlock(sausage);
         pizza.add(sausage);
         pizza.printToppings();
-
 
 
 
