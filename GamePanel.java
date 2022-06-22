@@ -9,10 +9,10 @@ public class GamePanel  extends JPanel implements Runnable{
    //game panel is a subclass of Jpanel 
    //SCREEN SETTINGS
 
-   public static final int tileSize = 40;
+   public static final int tileSize = 100;
    //we are using tiles that are 16*  16
-   final int screenWidth = 16 * 40 ;
-   final int screenHeight = 16 * 20;
+   final int screenWidth = 20 * 60 ;
+   final int screenHeight = 20 * 40;
 
    //FPS
    int FPS = 60;
@@ -94,7 +94,7 @@ public class GamePanel  extends JPanel implements Runnable{
       super.paintComponent(g);
       Graphics2D g2 = (Graphics2D)g;
 
-      //tileM.draw(g2);
+      tileM.draw(g2);
       player1.draw(g2);
 
       g2.dispose();

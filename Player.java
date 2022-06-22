@@ -197,11 +197,11 @@ public class Player {
              }
             else if(keyH.leftPressed == true){
                 direction = "right";
-                if (x + speed < gp.getScreenWidth()-gp.tileSize){
+                if (x + speed < gp.getScreenWidth()-2*gp.tileSize){
                    x += speed;
                 }
-                else if(x + speed > gp.getScreenWidth()-gp.tileSize){
-                   x = gp.getScreenWidth()-gp.tileSize;
+                else if(x + speed > gp.getScreenWidth()-2*gp.tileSize){
+                   x = gp.getScreenWidth()-2*gp.tileSize;
                 }
                 
              }
@@ -210,8 +210,8 @@ public class Player {
                 if (x - speed > 0){
                    x -= speed;
                 }
-                else if (x - speed < 0){
-                   x = 0;
+                if (x - speed < gp.tileSize){
+                   x = gp.tileSize;
                 }
              }
 
