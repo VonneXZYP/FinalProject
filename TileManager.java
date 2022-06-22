@@ -2,11 +2,7 @@ import java.io.IOException;
 import java.awt.Graphics2D;
 import javax.imageio.ImageIO;
 import java.util.Set;
-import java.util.Map.Entry;
-import java.util.List;
 import java.util.Map;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 
 public class TileManager {
